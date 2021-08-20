@@ -22,39 +22,25 @@ public class GreetingController {
 	public String Hello(@RequestParam("date") Integer date){
 		
 		Integer d = 2021- date;
-		if (d >=0 && d< 14)
-			return "Vous avez " +d +" ans"+ "\nvous etes un enfant";
-		
-		else if(d>=14 && d<16)
-			return "Vous avez " +d +" ans"+ "\nvous etes un adolescent";
-		
-		else if(d>=16 && d<18)
-			return "Vous avez " +d +" ans"+ "\nvous etes un jeune";
-		
-		else if(d >=18 && d< 30)
-			return "Vous avez " +d +" ans"+ "\nvous etes un adulte";
-		
-		else
-		return "vous etes responsable";
+		switch(d) {
+		case 0: case 1: case 2: case 3:
+				return "Vous avez " +d +" ans"+ "\n vous etes un enfant";
+				
+		case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: 
+		case 12: case 13: case 14: case 15:
+			return "Vous avez " +d +" ans"+ "\n vous etes un adolescent";
+			
+		case 16: case 17:
+			return "Vous avez " +d +" ans"+ "\n vous etes un jeune";
+			
+		case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: 
+		case 26: case 27: case 28: case 29:	
+			return "Vous avez " +d +" ans"+ "\n vous etes un adulte";
+			
+		default: 
+			return "Vous avez " +d +" ans"+  "\n vous etes responsable";
+
+		}
+				
 	}
 }
-/*@GetMapping ("/test")
-public void Hello(@RequestParam("date") Integer date){
-	
-	Integer d = 2021- date;
-	if (d >0 && d< 14)
-		
-		System.out.println ("Vous avez " +d +" ans"+ "\nvous etes un enfant");
-	
-	else if(d>=14 && d<16)
-		
-		System.out.println ("Vous avez " +d +" ans"+ "\nvous etes un adolescent");
-	
-	
-	else if(d >=18 && d< 30)
-		
-		System.out.println ("Vous avez " +d +" ans"+ "\nvous etes un adulte");
-	else
-		System.out.println ("Vous avez " +d +" ans"+ "\nvous etes un responsable");
-	
-}*/
