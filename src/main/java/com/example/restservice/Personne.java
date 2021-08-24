@@ -7,6 +7,9 @@ public class Personne {
 	private String prenom;
 	private Date annee;
 	private String genre;
+	private String libelle;
+	private int quantite;
+	private int prixU;
 	public String getNom() {
 		return nom;
 	}
@@ -30,6 +33,25 @@ public class Personne {
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	
+	public String getLibelle() {
+		return libelle;
+	}
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	public int getQuantite() {
+		return quantite;
+	}
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	public int getPrixU() {
+		return prixU;
+	}
+	public void setPrixU(int prixU) {
+		this.prixU = prixU;
 	}
 	@Override
 	public String toString() {

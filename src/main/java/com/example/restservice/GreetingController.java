@@ -16,17 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class GreetingController {
 
-	//private static final String template = "Hello, %s!";
-	//private final AtomicLong counter = new AtomicLong();
-
-	/*@GetMapping("/greeting")
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
 	
-	@GetMapping ("/test")
-			
-	}*/
 	@RequestMapping(value = "http://localhost:8082/greeting", method = RequestMethod.GET)
 	 public ModelAndView showForm() {
        return new ModelAndView("personneHome", "personne", new Personne());
@@ -43,13 +33,17 @@ public class GreetingController {
 	        model.addAttribute("prenom", personne. getPrenom());
 	        model.addAttribute("annee", personne.getAnnee());
 	        model.addAttribute("genre", personne.getGenre());
+	        model.addAttribute("libelle", personne.getLibelle());
+	        model.addAttribute("quantite", personne.getQuantite());
+	        
+	       // model.addAttribute("PU", personne.getPrixU());
 	        DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");  
 			String str =dateFormat.format(personne.getAnnee());
 			
 			 String[] arrOfStr = str.split("/");
 			 int resultat=0;
 		      int age=Integer.parseInt( arrOfStr[2]);
-		        resultat= 2021-age;
+		       resultat= 2021-age;
 		       	        
 		        String reponse =null;
 		        switch(resultat)
@@ -74,7 +68,14 @@ public class GreetingController {
 						reponse= "vous etes responsable";  
 					break;
 		        } 
-		       return "Bonjour "+personne.getNom()+" "+personne. getPrenom() +" "+personne.getAnnee()+" "+personne.getGenre()+" "+reponse;
+		        String choix=null;
+		        if(personne.getGenre().equals("feminin")) 
+		        	choix=" Madame";
+		        else
+		        	choix="Monsieur";
+		        	
+		       return "Bonjour "+choix+" "+personne.getNom()+" "+personne. getPrenom() +" "+reponse+
+		    		   " "+personne.getLibelle()+ " "+personne.getQuantite()+" "+personne.getPrixU();
 	 }
 }
 	
